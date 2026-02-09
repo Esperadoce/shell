@@ -63,7 +63,14 @@ Singleton {
                 disconnectCmd: ["tailscale", "down"],
                 interface: "tailscale0",
                 displayName: "Tailscale"
+            },
+            "nordvpn": {
+                connectCmd: ["nordvpn", "connect"],
+                disconnectCmd: ["nordvpn", "disconnect"],
+                interface: "nordlynx",
+                displayName: "NordVPN"
             }
+
         };
 
         return builtins[name] || {
@@ -90,7 +97,15 @@ Singleton {
         if (connected) {
             disconnect();
         } else {
+            // Log all the
+            console.log(!connected && !connecting && root.currentConfig && root.currentConfig.connectCmd);
+            console.log("connected :"+!connected);
+            console.log("connecting :"+!connecting);
+            console.log("root.currentConfig :"+root.currentConfig);
+            console.log("root.connectCmd :"+root.connectCmd);
+
             connect();
+            console.log("Toggled connection");
         }
     }
 

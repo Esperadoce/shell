@@ -28,6 +28,23 @@ Scope {
         }
     }
 
+    CustomShortcut{
+        name: "gameMode"
+        description: "Toggle game mode"
+        onPressed: {
+            GameMode.ipcHandler.toggle();
+        }
+    }
+
+    CustomShortcut{
+        name: "idleInhibitor"
+        description : "Toggle idle inhibitor"
+        onPressed: {
+            IdleInhibitor.ipchandle.toggle()
+        }
+    
+    }
+
     CustomShortcut {
         name: "dashboard"
         description: "Toggle dashboard"
@@ -68,6 +85,8 @@ Scope {
         description: "Interrupt launcher keybind"
         onPressed: root.launcherInterrupted = true
     }
+
+    
 
     IpcHandler {
         target: "drawers"

@@ -11,7 +11,7 @@ Singleton {
     id: root
 
     property alias enabled: props.enabled
-
+    property alias ipcHandler: ipc
     function setDynamicConfs(): void {
         Hypr.extras.applyOptions({
             "animations:enabled": 0,
@@ -55,6 +55,7 @@ Singleton {
     }
 
     IpcHandler {
+        id: ipc
         target: "gameMode"
 
         function isEnabled(): bool {
