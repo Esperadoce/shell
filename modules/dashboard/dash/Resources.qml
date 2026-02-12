@@ -21,19 +21,31 @@ Row {
         icon: "memory"
         value: SystemUsage.cpuPerc
         colour: Colours.palette.m3primary
+        labelValue: `${Math.round(SystemUsage.cpuPerc * 100)}`
     }
 
     Resource {
         icon: "memory_alt"
         value: SystemUsage.memPerc
         colour: Colours.palette.m3secondary
+        labelValue: `${SystemUsage.formatKib(SystemUsage.memUsed).value.toFixed(1)}`
+    }
+
+        Resource {
+        icon: "videogame_asset"
+        value: SystemUsage.gpuPerc
+        colour: Colours.palette.m3secondary
+        labelValue: `${Math.round(SystemUsage.gpuPerc * 100)}`
     }
 
     Resource {
-        icon: "hard_disk"
+        icon: "hard_drive"
         value: SystemUsage.storagePerc
         colour: Colours.palette.m3tertiary
+        labelValue: `${Math.round(SystemUsage.storagePerc * 100)}`
     }
+
+
 
     component Resource: Item {
         id: res
@@ -41,11 +53,12 @@ Row {
         required property string icon
         required property real value
         required property color colour
-
+        required property string labelValue
         anchors.top: parent.top
         anchors.bottom: parent.bottom
         anchors.margins: Appearance.padding.large
         implicitWidth: icon.implicitWidth
+
 
         StyledRect {
             anchors.horizontalCenter: parent.horizontalCenter
@@ -66,6 +79,12 @@ Row {
 
                 color: res.colour
                 radius: Appearance.rounding.full
+            }
+
+            StyledText {
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.top: parent.top
+                text : labelValue
             }
         }
 

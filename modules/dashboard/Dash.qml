@@ -1,5 +1,6 @@
 import qs.components
 import qs.components.filedialog
+import qs.components.misc
 import qs.services
 import qs.config
 import "dash"
@@ -12,6 +13,15 @@ GridLayout {
     required property PersistentProperties visibilities
     required property PersistentProperties state
     required property FileDialog facePicker
+
+    Ref {
+        service: SystemUsage
+    }
+
+
+    function displayTemp(temp: real): string {
+        return `${Math.ceil(Config.services.useFahrenheit ? temp * 1.8 + 32 : temp)}°${Config.services.useFahrenheit ? "F" : "C"}`;
+    }
 
     rowSpacing: Appearance.spacing.normal
     columnSpacing: Appearance.spacing.normal
@@ -75,9 +85,22 @@ GridLayout {
     Rect {
         Layout.row: 1
         Layout.column: 4
-        Layout.preferredWidth: resources.implicitWidth
+
+        Layout.preferredWidth: media.implicitWidth
         Layout.fillHeight: true
 
+        radius: Appearance.rounding.large * 2
+
+        Media {
+            id: media
+        }
+    }
+
+    Rect {
+        Layout.row: 1
+        Layout.column: 5
+        Layout.preferredWidth: resources.implicitWidth
+        Layout.fillHeight: true
         radius: Appearance.rounding.normal
 
         Resources {
@@ -88,14 +111,11 @@ GridLayout {
     Rect {
         Layout.row: 0
         Layout.column: 5
-        Layout.rowSpan: 2
-        Layout.preferredWidth: media.implicitWidth
         Layout.fillHeight: true
-
-        radius: Appearance.rounding.large * 2
-
-        Media {
-            id: media
+        Layout.fillWidth: true
+        radius: Appearance.rounding.normal
+        SystemTemperature {
+            id: systemTemperature
         }
     }
 

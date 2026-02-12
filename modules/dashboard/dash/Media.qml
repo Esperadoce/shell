@@ -201,23 +201,23 @@ Item {
         }
     }
 
-    AnimatedImage {
-        id: bongocat
+    // AnimatedImage {
+    //     id: bongocat
 
-        anchors.top: controls.bottom
-        anchors.bottom: parent.bottom
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.topMargin: Appearance.spacing.small
-        anchors.bottomMargin: Appearance.padding.large
-        anchors.margins: Appearance.padding.large * 2
+    //     anchors.top: controls.bottom
+    //     anchors.bottom: parent.bottom
+    //     anchors.left: parent.left
+    //     anchors.right: parent.right
+    //     anchors.topMargin: Appearance.spacing.small
+    //     anchors.bottomMargin: Appearance.padding.large
+    //     anchors.margins: Appearance.padding.large * 2
 
-        playing: Players.active?.isPlaying ?? false
-        speed: Audio.beatTracker.bpm / Appearance.anim.mediaGifSpeedAdjustment
-        source: Paths.absolutePath(Config.paths.mediaGif)
-        asynchronous: true
-        fillMode: AnimatedImage.PreserveAspectFit
-    }
+    //     playing: Players.active?.isPlaying ?? false
+    //     speed: Audio.beatTracker.bpm / Appearance.anim.mediaGifSpeedAdjustment
+    //     source: Paths.absolutePath(Config.paths.mediaGif)
+    //     asynchronous: true
+    //     fillMode: AnimatedImage.PreserveAspectFit
+    // }
 
     component Control: StyledRect {
         id: control

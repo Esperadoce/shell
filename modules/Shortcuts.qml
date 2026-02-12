@@ -42,12 +42,12 @@ Scope {
         onPressed: {
             IdleInhibitor.ipchandle.toggle()
         }
-    
+        
     }
 
     CustomShortcut {
         name: "dashboard"
-        description: "Toggle dashboard"
+        description: "Toggle dashboard" // Home
         onPressed: {
             if (root.hasFullscreen)
                 return;
@@ -64,6 +64,17 @@ Scope {
                 return;
             const visibilities = Visibilities.getForActive();
             visibilities.session = !visibilities.session;
+        }
+    }
+
+        CustomShortcut {
+        name: "sidebar"
+        description: "Toggle sidebar" // Home
+        onPressed: {
+            if (root.hasFullscreen)
+                return;
+            const visibilities = Visibilities.getForActive();
+            visibilities.sidebar = !visibilities.sidebar;
         }
     }
 
@@ -85,8 +96,6 @@ Scope {
         description: "Interrupt launcher keybind"
         onPressed: root.launcherInterrupted = true
     }
-
-    
 
     IpcHandler {
         target: "drawers"
