@@ -1,6 +1,10 @@
 {
-    "editor.defaultFormatter": "theqtcompany.qt-qml",
-    "[cpp]": {
-        "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
-    }
+  "editor.defaultFormatter": "theqtcompany.qt-qml",
+  "editor.formatOnSave": true,
+  "editor.formatOnSaveMode": "file",
+  "editor.formatOnSaveTimeout": 750,
+  "[cpp]": {
+    "editor.defaultFormatter": "llvm-vs-code-extensions.vscode-clangd"
+  },
+
 }
