@@ -67,17 +67,6 @@ Scope {
         }
     }
 
-        CustomShortcut {
-        name: "sidebar"
-        description: "Toggle sidebar" // Home
-        onPressed: {
-            if (root.hasFullscreen)
-                return;
-            const visibilities = Visibilities.getForActive();
-            visibilities.sidebar = !visibilities.sidebar;
-        }
-    }
-
     CustomShortcut {
         name: "launcher"
         description: "Toggle launcher"
