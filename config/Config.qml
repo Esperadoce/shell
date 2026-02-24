@@ -440,7 +440,7 @@ Singleton {
     function serializePaths(): var {
         return {
             wallpaperDir: paths.wallpaperDir,
-            sessionGif: paths.sessionGif,
+            // sessionGif: paths.sessionGif,
             mediaGif: paths.mediaGif
         };
     }

@@ -11,7 +11,7 @@ JsonObject {
     property real brightnessIncrement: 0.1
     property real maxVolume: 1.0
     property bool smartScheme: true
-    property string defaultPlayer: "Spotify"
+    property string defaultPlayer: "Cider"
     property list<var> playerAliases: [
         {
             "from": "com.github.th_ch.youtube_music",
