@@ -14,6 +14,8 @@ Item {
     property string source: Wallpapers.current
     property Image current: one
 
+    anchors.fill: parent
+
     onSourceChanged: {
         if (!source)
             current = null;

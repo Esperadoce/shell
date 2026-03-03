@@ -106,7 +106,7 @@ Item {
 
             anchors.fill: parent
 
-            source: Players.active?.trackArtUrl ?? "" // qmllint disable incompatible-type
+            source: Players.active?.trackArtUrl ?? ""
             asynchronous: true
             fillMode: Image.PreserveAspectCrop
             sourceSize.width: width

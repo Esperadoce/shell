@@ -27,15 +27,6 @@ CollapsibleSection {
         }
     }
 
-    SwitchRow {
-        label: qsTr("Wallpaper enabled")
-        checked: rootPane.wallpaperEnabled
-        onToggled: checked => {
-            rootPane.wallpaperEnabled = checked;
-            rootPane.saveConfig();
-        }
-    }
-
     StyledText {
         Layout.topMargin: Appearance.spacing.normal
         text: qsTr("Desktop Clock")

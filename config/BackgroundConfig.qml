@@ -2,7 +2,6 @@ import Quickshell.Io
 
 JsonObject {
     property bool enabled: true
-    property bool wallpaperEnabled: true
     property DesktopClock desktopClock: DesktopClock {}
     property Visualiser visualiser: Visualiser {}
 

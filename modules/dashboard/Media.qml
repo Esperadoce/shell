@@ -1,12 +1,14 @@
 pragma ComponentBehavior: Bound
 
 import qs.components
+import qs.components.effects
 import qs.components.controls
 import qs.services
 import qs.utils
 import qs.config
 import Caelestia.Services
 import Quickshell
+import Quickshell.Widgets
 import Quickshell.Services.Mpris
 import QtQuick
 import QtQuick.Layouts
@@ -140,7 +142,7 @@ Item {
 
             anchors.fill: parent
 
-            source: Players.active?.trackArtUrl ?? "" // qmllint disable incompatible-type
+            source: Players.active?.trackArtUrl ?? ""
             asynchronous: true
             fillMode: Image.PreserveAspectCrop
             sourceSize.width: width
@@ -322,7 +324,7 @@ Item {
 
                 disabled: !Players.list.length
                 active: menuItems.find(m => m.modelData === Players.active) ?? menuItems[0] ?? null
-                menu.onItemSelected: item => Players.manualActive = (item as PlayerItem).modelData
+                menu.onItemSelected: item => Players.manualActive = item.modelData
 
                 menuItems: playerList.instances
                 fallbackIcon: "music_off"
@@ -339,7 +341,13 @@ Item {
 
                     model: Players.list
 
-                    PlayerItem {}
+                    MenuItem {
+                        required property MprisPlayer modelData
+
+                        icon: modelData === Players.active ? "check" : ""
+                        text: Players.getIdentity(modelData)
+                        activeIcon: "animated_images"
+                    }
                 }
             }
 
@@ -354,39 +362,7 @@ Item {
             }
         }
     }
-
-    Item {
-        id: bongocat
-
-        anchors.verticalCenter: parent.verticalCenter
-        anchors.left: details.right
-        anchors.leftMargin: Appearance.spacing.normal
-
-        implicitWidth: visualiser.width
-        implicitHeight: visualiser.height
-
-        AnimatedImage {
-            anchors.centerIn: parent
-
-            width: visualiser.width * 0.75
-            height: visualiser.height * 0.75
-
-            playing: Players.active?.isPlaying ?? false
-            speed: Audio.beatTracker.bpm / Appearance.anim.mediaGifSpeedAdjustment
-            source: Paths.absolutePath(Config.paths.mediaGif)
-            asynchronous: true
-            fillMode: AnimatedImage.PreserveAspectFit
-        }
-    }
     
-    component PlayerItem: MenuItem {
-        required property MprisPlayer modelData
-
-        icon: modelData === Players.active ? "check" : ""
-        text: Players.getIdentity(modelData)
-        activeIcon: "animated_images"
-    }
-
     component PlayerControl: IconButton {
         Layout.preferredWidth: implicitWidth + (stateLayer.pressed ? Appearance.padding.large : internalChecked ? Appearance.padding.smaller : 0)
         radius: stateLayer.pressed ? Appearance.rounding.small / 2 : internalChecked ? Appearance.rounding.small : implicitHeight / 2

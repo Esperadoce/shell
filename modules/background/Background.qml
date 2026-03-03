@@ -22,9 +22,8 @@ Loader {
             screen: modelData
             name: "background"
             WlrLayershell.exclusionMode: ExclusionMode.Ignore
-            WlrLayershell.layer: Config.background.wallpaperEnabled ? WlrLayer.Background : WlrLayer.Bottom
-            color: Config.background.wallpaperEnabled ? "black" : "transparent"
-            surfaceFormat.opaque: false
+            WlrLayershell.layer: WlrLayer.Background
+            color: "black"
 
             anchors.top: true
             anchors.bottom: true
@@ -36,13 +35,8 @@ Loader {
 
                 anchors.fill: parent
 
-                Loader {
+                Wallpaper {
                     id: wallpaper
-
-                    anchors.fill: parent
-                    active: Config.background.wallpaperEnabled
-
-                    sourceComponent: Wallpaper {}
                 }
 
                 Visualiser {

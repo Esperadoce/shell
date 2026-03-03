@@ -60,10 +60,10 @@ Item {
         id: indicator
 
         anchors.top: bar.bottom
-        anchors.topMargin: 5
+        anchors.topMargin: Config.dashboard.sizes.tabIndicatorSpacing
 
         implicitWidth: bar.currentItem.implicitWidth
-        implicitHeight: 3
+        implicitHeight: Config.dashboard.sizes.tabIndicatorHeight
 
         x: {
             const tab = bar.currentItem;

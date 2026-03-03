@@ -18,7 +18,7 @@ Column {
     SessionButton {
         id: logout
 
-        icon: Config.session.icons.logout
+        icon: "logout"
         command: Config.session.commands.logout
 
         KeyNavigation.down: shutdown
@@ -38,7 +38,7 @@ Column {
     SessionButton {
         id: shutdown
 
-        icon: Config.session.icons.shutdown
+        icon: "power_settings_new"
         command: Config.session.commands.shutdown
 
         KeyNavigation.up: logout
@@ -48,7 +48,7 @@ Column {
     SessionButton {
         id: hibernate
 
-        icon: Config.session.icons.hibernate
+        icon: "downloading"
         command: Config.session.commands.hibernate
 
         KeyNavigation.up: shutdown
@@ -58,7 +58,7 @@ Column {
     SessionButton {
         id: reboot
 
-        icon: Config.session.icons.reboot
+        icon: "cached"
         command: Config.session.commands.reboot
 
         KeyNavigation.up: hibernate
