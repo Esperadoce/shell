@@ -1,6 +1,7 @@
 import qs.components
 import qs.services
 import qs.config
+import Caelestia
 import Quickshell
 import QtQuick
 import QtQuick.Layouts
@@ -17,6 +18,7 @@ Item {
         
         // Execute the AI query command
         // You'll need to configure the AI command in your config
+        //Show notification or show a message to the user that the query was executed
         Quickshell.execDetached(["wl-copy", query]);
         root.list.visibilities.launcher = false;
     }
@@ -26,6 +28,7 @@ Item {
         
         // Open terminal with AI tool and the query
         Quickshell.execDetached(["app2unit", "--", ...Config.general.apps.terminal, "fish", "-C", `# AI tool with query: "${query}"`]);
+        Toaster.toast(qsTr("Ask ai"), qsTr("new feature"), "robot");
         root.list.visibilities.launcher = false;
     }
 

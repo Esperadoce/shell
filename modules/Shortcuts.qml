@@ -1,5 +1,6 @@
 import qs.components.misc
 import qs.modules.controlcenter
+// import qs.modules.aiPanel
 import qs.services
 import Caelestia
 import Quickshell
@@ -16,6 +17,12 @@ Scope {
         description: "Open control center"
         onPressed: WindowFactory.create()
     }
+
+    // CustomShortcut {
+    //     name: "aiPanel"
+    //     description: "Open AI Chat Panel"
+    //     onPressed: WindowFactory.create()
+    // }
 
     CustomShortcut {
         name: "showall"
